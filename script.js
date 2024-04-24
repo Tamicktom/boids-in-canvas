@@ -3,6 +3,17 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth - 64;
 const height = canvas.height = window.innerHeight - 64;
 
+// Definindo o número de colunas e linhas para dividir o canvas
+const numCols = 10;
+const numRows = 10;
+const chunkWidth = width / numCols;
+const chunkHeight = height / numRows;
+
+function assignBoidToChunk(boid) {
+  boid.chunkX = Math.floor(boid.x / chunkWidth);
+  boid.chunkY = Math.floor(boid.y / chunkHeight);
+}
+
 // Função utilitária para gerar números aleatórios em um intervalo
 function randomRange(min, max) {
   return Math.random() * (max - min) + min;
